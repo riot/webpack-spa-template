@@ -18,14 +18,14 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^8.4.0",
     "nyc": "^15.1.0",
-    "webpack": "^5.47.0",
+    "webpack": "^5.47.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "@riotjs/hot-reload": "^6.0.0",
-    "@riotjs/lazy": "^2.0.0",
+    "@riotjs/lazy": "^2.0.1",
     "@riotjs/route": "^8.0.0",
-    "riot": "^6.0.1"
+    "riot": "^6.0.2"
   }
 }

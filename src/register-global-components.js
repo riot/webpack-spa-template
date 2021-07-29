@@ -7,9 +7,9 @@ export default () => {
   globalComponentsContext.keys().map(path => {
     const name = basename(path, '.riot')
 
-    const component = globalComponentsContext(path).default
+    const component = globalComponentsContext(path)
 
-    register(name, component)
+    register(name, component.default || component)
 
     return {
       name,
