@@ -1,6 +1,6 @@
-
-const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const path = require('path')
 
 module.exports = {
   entry: {
@@ -8,39 +8,15 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
-    filename: 'bundle.js',
-    chunkFilename: 'chunks/[name]/index.[chunkhash].js',
-    devtoolModuleFilenameTemplate: 'source-webpack:///[resourcePath]',
-    devtoolFallbackModuleFilenameTemplate: 'source-webpack:///[resourcePath]?[hash]'
+    filename: '[name].bundle.js',
+    clean: true
   },
-  devtool: '#source-map',
+  devtool: 'source-map',
   devServer: {
+    hot: true,
     open: true,
     historyApiFallback: {
       index: 'index.html'
-    }
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'async',
-      minSize: 30000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 6,
-      maxInitialRequests: 4,
-      automaticNameDelimiter: '~',
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
     }
   },
   module: {
@@ -56,5 +32,11 @@ module.exports = {
         }]
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+  ]
 }
