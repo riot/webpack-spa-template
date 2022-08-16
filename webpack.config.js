@@ -11,6 +11,9 @@ module.exports = {
     filename: '[name].bundle.js',
     clean: true
   },
+  externals: {
+    url: 'url',
+  },
   devtool: 'source-map',
   optimization: {
     runtimeChunk: {
@@ -41,9 +44,7 @@ module.exports = {
   devServer: {
     hot: true,
     open: true,
-    historyApiFallback: {
-      index: 'index.html'
-    }
+    historyApiFallback: true
   },
   module: {
     rules: [
